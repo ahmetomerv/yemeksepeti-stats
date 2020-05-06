@@ -26,12 +26,24 @@
 <body>
    <span style="font-family: Roboto, sans-serif; display: none;">&nbsp;</span>
 
+   <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+      <div class="container">
+         <a class="navbar-brand" href="#">
+            <img src="assets/img/ys-icon.svg" width="30" height="30" alt="Logo">
+         </a>
+         <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/ahmetomerv/yemeksepeti-stats">GitHub</a>
+         </div>
+      </div>
+   </nav>
+   
    <div class="container">
       <h1 class="mt-5">Yemeksepeti Stats</h1>
       <p>Overview statistics tool for Yemeksepeti.</p>
 
       <br>
-      
+
       <p>
          To get your order history statistics:
       </p>
@@ -330,7 +342,7 @@
             hljs.highlightBlock(pres[i]);
          }
          var options = {
-            contentSelector: ".container",
+            contentSelector: ".js-code-container",
             loadDelay:0,
             copyIconClass: "fa fa-copy",
             checkIconClass: "fa fa-check text-success",
@@ -340,6 +352,13 @@
             }
          };
          window.highlightJsBadge(options);
+
+         const copyBadge = document.getElementsByClassName('code-badge-copy-icon')[0];
+         const copyBadgeText = document.createElement('span');
+         copyBadgeText.className = 'copy-badge-text';
+         copyBadgeText.innerText = 'Click to copy code';
+
+         copyBadge.insertAdjacentElement('beforebegin', copyBadgeText);
       });
        
    </script>

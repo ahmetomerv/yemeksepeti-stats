@@ -1,3 +1,16 @@
 .steps-list li {
    list-style: none;
 }
+
+.code-badge-copy-icon {
+   font-size: 1.3em !important;
+}
+
+.code-badge {
+   left: 0 !important;
+   justify-content: space-between !important;
+   position: relative !important;
+   border-radius: 0 !important;
+   background: #3a3333 !important;
+   opacity: .7 !important;
+}
