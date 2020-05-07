@@ -14,3 +14,21 @@
    background: #3a3333 !important;
    opacity: .7 !important;
 }
+
+.demo-container {
+   margin: 1em auto 3em auto;
+   text-align: center;
+}
+
+.demo-container .demo-gif {
+   width: 45%;
+   border: 1px solid #5d575724;
+   border-radius: 3px;
+   opacity: .9;
+}
+
+@media only screen and (max-width: 767px) {
+   .demo-container .demo-gif {
+      width: 100%;
+   }
+}

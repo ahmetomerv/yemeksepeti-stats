@@ -32,7 +32,7 @@
             <img src="assets/img/ys-icon.svg" width="30" height="30" alt="Logo">
          </a>
          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="/">Home <span class="sr-only"></span></a>
             <a class="nav-item nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/ahmetomerv/yemeksepeti-stats">GitHub</a>
          </div>
       </div>
@@ -40,20 +40,26 @@
    
    <div class="container">
       <h1 class="mt-5">Yemeksepeti Stats</h1>
-      <p>Overview statistics tool for Yemeksepeti.</p>
+      <p>Order statistics tool for Yemeksepeti. Orders data are collected from DOM elements since Yemeksepeti doesn't have a public API. There is a way to listen to outgoing POST network calls to <code>/Account/GetOrderHistory</code>, which is triggered on scroll, there's no way to run the code and catch the first request (well, this can be done with an extension, but, at this moment, I do not think many people would install and use it more than a few times.</p>
+      <p>One little drawback is that this only works for order history that are more than 3 pages, which are about 60 orders. This has to do with a bug Yemeksepeti API has which always returns false for <code>HasNextPage</code> property in the fourth call.</p>
 
       <br>
 
-      <p>
-         To get your order history statistics:
-      </p>
-
-      <ul class="steps-list">
-         <li>1 - Copy the code below</li>
-         <li>2 - Go to <a href="https://www.yemeksepeti.com/hesabim/onceki-siparislerim">Yemeksepeti Order History</a> page</li>
-         <li>3 - Open the console with F12</li>
-         <li>4 - Paste the code and hit Enter</li>
-      </ul>
+      <div class="steps-container">
+         <div class="demo-container">
+            <img class="demo-gif" src="assets/demo.gif" alt="Demo gif"/>
+         </div>
+         <div>
+            <p>To get your order history statistics:</p>
+            <ul class="steps-list">
+               <li>1 - Copy the code below</li>
+               <li>2 - Go to <a href="https://www.yemeksepeti.com/hesabim/onceki-siparislerim">Yemeksepeti Order History</a> page</li>
+               <li>3 - Open the console with F12</li>
+               <li>4 - Paste the code and press Enter</li>
+            </ul>
+         </div>
+         
+      </div>
       
       <div class="js-code-container">
          <pre>
@@ -346,7 +352,7 @@
             loadDelay:0,
             copyIconClass: "fa fa-copy",
             checkIconClass: "fa fa-check text-success",
-            
+
             onBeforeTextCopied: function(text, codeElement) {
                return text;
             }
