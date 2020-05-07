@@ -36,3 +36,13 @@
       width: 100%;
    }
 }
+
+@media only screen and (max-width: 767px) {
+   .navbar-nav {
+      flex-direction: row;
+   }
+
+   .navbar-nav .nav-item {
+      margin-left: 1em;
+   }
+}
