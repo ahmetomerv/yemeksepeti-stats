@@ -2,9 +2,13 @@ const orders = [];
 const orderDateRegex = /Sipariş\s*Tarihi:\s*((3[01]|[12][0-9]|0?[1-9])[.](1[012]|0?[1-9])[.]((?:19|20)\d{2}))/;
 const orderPriceRegex = /Tutar\s*:\s*(\d*\,?[0-9]?[0-9]?)/;
 const numberRegex = /\d+/;
+const ysFooter = document.getElementsByClassName('ys-footer')[0];
 let ordersTotalSum = 0;
 let ordersAveragePrice = 0;
 let orderPageCounter = 0;
+
+initializeNetworkListener();
+scrollToElement(ysFooter);
 
 const PIXEL_RATIO = (() => {
 	const context = document.createElement('canvas').getContext('2d'),
@@ -215,8 +219,10 @@ function createYsStatsCanvas(foodList) {
 
 	profileImagePromise.then((val) => {
 		canvas.id = 'ysStatsCanvas';
-		$('body').append(canvas);
+		canvas.style.display = 'none';
+		document.body.appendChild(canvas);
 		downloadCanvasImage(canvas, ysUserName);
+		downloadJsonData(orders);
 	}).catch(err => {
 		console.log(err);
 	});
@@ -228,12 +234,28 @@ const downloadCanvasImage = (canvas, userName) => {
 
 	if (canvas) {
 		const link = document.createElement('a');
+		const data = canvas.toDataURL('image/png');
+
 		canvas.setAttribute('crossorigin', '');
+		link.style.display = 'none';
 		link.download = fileName;
-		link.href = document.getElementById('ysStatsCanvas').toDataURL('image/png');
+		link.href = data;
 		link.click();
 	}
 };
+
+function downloadJsonData(data) {
+	if (data) {
+		const fileName = 'ys-data.json';
+		const link = document.createElement('a');
+		const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data));
+
+		link.style.display = 'none';
+		link.download = fileName;
+		link.href = dataStr;
+		link.click();
+	}
+}
 
 function scrollToElement(element) {
 	if (element) {
@@ -242,9 +264,6 @@ function scrollToElement(element) {
 		}, 500)
 	}
 }
-
-initializeNetworkListener();
-scrollToElement(document.getElementsByClassName('ys-footer')[0]);
 
 function initializeNetworkListener() {
 	const origOpen = XMLHttpRequest.prototype.open;
@@ -259,7 +278,7 @@ function initializeNetworkListener() {
 			}
 			
 			if (data.HasNextPage) {
-				scrollToElement(document.getElementsByClassName('ys-footer')[0]);
+				scrollToElement(ysFooter);
 				return;
 			}
 		});
