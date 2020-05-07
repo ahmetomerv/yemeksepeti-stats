@@ -6,6 +6,10 @@
    font-size: 1.3em !important;
 }
 
+.hljs {
+   height: 800px;
+}
+
 .code-badge {
    left: 0 !important;
    justify-content: space-between !important;
