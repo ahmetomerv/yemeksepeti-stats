@@ -1,7 +1,7 @@
 const scriptUrl = 'scripts/ys-stats.js';
 
 $.get(scriptUrl, data => {
-   createCodeSnippetFromText(data);
+   createCodeSnippetFromString(data);
    initializeCodeHighlight();
 });
    
