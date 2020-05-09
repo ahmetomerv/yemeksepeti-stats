@@ -28,11 +28,11 @@ function scrapeYsOrdersData() {
 
 	if (ordersNodeList && ordersNodeList.length > 0) {
 		[].forEach.call(ordersNodeList, (node, index) => {
-			let order = {
-				orderRestaurant: node.children[0].children[0].children[0].innerText, // order restaurant
-				orderDate: node.children[0].children[0].children[1].innerText.match(orderDateRegex)[1], // order date
-				orderContent: node.children[1].children[0].children[0].children[0].innerText.split(', '), // order content
-				orderPrice: parseFloat(node.children[1].children[0].children[0].children[1].innerText.match(orderPriceRegex)[1]) // order price
+			const order = {
+				orderRestaurant: node.children[0].children[0].children[0].innerText,
+				orderDate: node.children[0].children[0].children[1].innerText.match(orderDateRegex)[1],
+				orderContent: node.children[1].children[0].children[0].children[0].innerText.split(', '),
+				orderPrice: parseFloat(node.children[1].children[0].children[0].children[1].innerText.match(orderPriceRegex)[1])
 			};
 
 			orders.push(order);
@@ -193,10 +193,6 @@ function createYsStatsCanvas(foodList) {
 	context.fillStyle = '#fff';
 	context.font = 'bold 35px Roboto';
 	context.fillText('Yemeksepetim',  width/2 - 140, 50);
-
-	context.fillStyle = 'rgba(255,255,255,0.33)';
-	context.font = 'normal 15px Roboto';
-	context.fillText('@ahmetomerv',  width - 140, 45);
 
 	context.fillStyle = '#fff';
 	context.font = 'normal 22px Roboto';
