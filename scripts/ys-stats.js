@@ -143,7 +143,7 @@ function initializeCanvasGradient(context, width, height, color1, color2) {
 	color2 = color2 || '#000';
 	width = width || window.innerWidth;
 	height = height || window.innerHeight;
-	const gradient = context.createLinearGradient(width, 0, 0,0);
+	const gradient = context.createLinearGradient(width, 0, 0, 0);
 
 	gradient.addColorStop(1, color1);
 	gradient.addColorStop(0, color2);
