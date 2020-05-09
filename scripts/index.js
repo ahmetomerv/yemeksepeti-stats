@@ -10,7 +10,7 @@ function createCodeSnippetFromText(text) {
    const code = document.createElement('code');
    const snipperContainer = document.getElementById('js-code-snippet');
       
-   code.innerText = text;
+   code.innerHTML = text;
    code.className = 'hljs language-js';
    pre.appendChild(code);
    snipperContainer.appendChild(pre);
