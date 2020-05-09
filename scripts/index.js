@@ -5,15 +5,17 @@ $.get(scriptUrl, data => {
    initializeCodeHighlight();
 });
    
-function createCodeSnippetFromText(text) {
-   const pre = document.createElement('pre');
-   const code = document.createElement('code');
-   const snipperContainer = document.getElementById('js-code-snippet');
-      
-   code.innerHTML = text;
-   code.className = 'hljs language-js';
-   pre.appendChild(code);
-   snipperContainer.appendChild(pre);
+function createCodeSnippetFromString(string) {
+   if (string) {
+      const pre = document.createElement('pre');
+      const code = document.createElement('code');
+      const snippetContainer = document.getElementById('js-code-snippet');
+         
+      code.innerHTML = string;
+      code.className = 'hljs language-js';
+      pre.appendChild(code);
+      snippetContainer.appendChild(pre);
+   }
 }
 
 function initializeCodeHighlight() {
